@@ -8,8 +8,6 @@ import pandas as pd
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
-from sentiment_analyzer import analyze_sentiment
-
 from predict_score import predict_score
 from utils import clean_post
 
