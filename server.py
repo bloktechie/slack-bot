@@ -1,5 +1,6 @@
 import os
 import logging
+import sys
 
 from flask import Flask, request, make_response
 from dotenv import load_dotenv
@@ -13,7 +14,13 @@ from utils import clean_post
 
 load_dotenv()
 
-logging.basicConfig(level=logging.DEBUG)
+log_location = os.path.abspath(os.path.join("root", "logfile.log"))
+FORMAT = '%(asctime)s : %(levelname)s : %(name)s : %(message)s'
+logging.basicConfig(level=logging.INFO, format=FORMAT, datefmt='%m/%d/%Y %H:%M:%S', handlers=[
+        logging.FileHandler(log_location),
+        logging.StreamHandler(sys.stdout)])
+logging.info("Testing the logger...")
+
 app = Flask(__name__)
 
 @app.route("/slack/message", methods=["POST"])
