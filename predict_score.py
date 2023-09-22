@@ -1,7 +1,12 @@
-import numpy as np
+import os
 import joblib
+import openai
 
 from openai.embeddings_utils import get_embedding
+from dotenv import load_dotenv
+
+load_dotenv()
+openai.api_key = os.environ['OPENAI_API_KEY']
 
 embedding_model = "text-embedding-ada-002"
 
