@@ -14,7 +14,7 @@ from utils import clean_post
 
 load_dotenv()
 
-log_location = os.path.abspath(os.path.join("root", "logfile.log"))
+log_location = os.path.abspath(os.path.join("logfile.log"))
 FORMAT = '%(asctime)s : %(levelname)s : %(name)s : %(message)s'
 logging.basicConfig(level=logging.INFO, format=FORMAT, datefmt='%m/%d/%Y %H:%M:%S', handlers=[
         logging.FileHandler(log_location),
