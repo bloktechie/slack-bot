@@ -52,6 +52,9 @@ def handle_message():
   if score < 1:
     return make_response("not important news")
 
+  SLACK_BOT_TOKEN = os.environ['SLACK_BOT_TOKEN']
+  slack_client = WebClient(SLACK_BOT_TOKEN)
+
   try:
     response = slack_client.chat_postMessage(
       channel=os.environ['SLACK_CHANNEL_NAME'], 
@@ -67,7 +70,4 @@ def handle_message():
 
 # Start the Flask server
 if __name__ == "__main__":
-  SLACK_BOT_TOKEN = os.environ['SLACK_BOT_TOKEN']
-  slack_client = WebClient(SLACK_BOT_TOKEN)
-
   app.run()
