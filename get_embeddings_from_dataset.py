@@ -8,19 +8,19 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-openai.api_key = os.environ['OPENAI_API_KEY']
+openai.api_key = os.environ["OPENAI_API_KEY"]
 
 embedding_model = "text-embedding-ada-002"
 embedding_encoding = "cl100k_base"  # this the encoding for text-embedding-ada-002
-max_tokens = 8000 
+max_tokens = 8000
 
 input_datapath = "data/posts.csv"  # to save space, we provide a pre-filtered dataset
 df = pd.read_csv(input_datapath)
 df = df[["content", "score", "project", "source"]]
 df = df.dropna()
 
-df['project'] = df['project'].str.lower()
-df['source'] = df['source'].str.lower()
+df["project"] = df["project"].str.lower()
+df["source"] = df["source"].str.lower()
 
 encoding = tiktoken.get_encoding(embedding_encoding)
 

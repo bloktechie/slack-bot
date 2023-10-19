@@ -19,15 +19,10 @@ and 10 is extremely important.
 Return just integer. Do not explain
 """
 
+
 def analyze_sentiment(message: str) -> int:
-  chat_gpt = ChatOpenAI(temperature=0)
-  prompt = PromptTemplate(
-    input_variables=["message"], template=PROMPT_TEMPLATE
-  )
-  sentiment_chain = LLMChain(llm=chat_gpt, prompt=prompt)
-  response = sentiment_chain(
-    {
-      "message": message
-    }
-  )
-  return json.loads(response["text"])
+    chat_gpt = ChatOpenAI(temperature=0)
+    prompt = PromptTemplate(input_variables=["message"], template=PROMPT_TEMPLATE)
+    sentiment_chain = LLMChain(llm=chat_gpt, prompt=prompt)
+    response = sentiment_chain({"message": message})
+    return json.loads(response["text"])
