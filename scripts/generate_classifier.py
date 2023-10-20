@@ -3,7 +3,7 @@ import numpy as np
 import joblib
 from ast import literal_eval
 
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import SGDClassifier
 
 datafile_path = "data/posts_with_embeddings.csv"
 
@@ -17,7 +17,7 @@ df["embedding"] = df.embedding.apply(literal_eval).apply(
 # )
 
 
-clf = RandomForestClassifier(n_estimators=100)
+clf = SGDClassifier()
 clf.fit(list(df.embedding.values), df.score)
 
 joblib.dump(clf, "data/posts_model.pkl", compress=9)
